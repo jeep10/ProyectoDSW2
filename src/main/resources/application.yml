@@ -1,0 +1,13 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/proyectoventaboletos
+    username: root
+    password: 1234
+
+
+  jpa:
+    show-sql: true
