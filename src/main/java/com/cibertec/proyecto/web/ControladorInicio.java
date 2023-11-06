@@ -125,6 +125,8 @@ public class ControladorInicio {
         
 
     }
+    
+    
 
     @GetMapping("/listaZona")
     public List<ZonaEvento> listaZona() {
