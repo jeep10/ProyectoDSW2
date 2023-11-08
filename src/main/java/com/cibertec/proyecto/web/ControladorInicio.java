@@ -16,11 +16,13 @@ import com.cibertec.proyecto.domain.Disponibilidad;
 import com.cibertec.proyecto.domain.Estado;
 import com.cibertec.proyecto.domain.Evento;
 import com.cibertec.proyecto.domain.Local;
+import com.cibertec.proyecto.domain.Usuario;
 import com.cibertec.proyecto.domain.ZonaEvento;
 import com.cibertec.proyecto.servicio.DisponibilidadService;
 import com.cibertec.proyecto.servicio.EstadoService;
 import com.cibertec.proyecto.servicio.EventoService;
 import com.cibertec.proyecto.servicio.LocalService;
+import com.cibertec.proyecto.servicio.UsuarioService;
 import com.cibertec.proyecto.servicio.ZonaEventoService;
 
 @RestController
@@ -42,13 +44,15 @@ public class ControladorInicio {
     @Autowired
     private ZonaEventoService zonaService;
     
+    @Autowired
+    private UsuarioService usuarioService;
+    
 
     /////////////Evento
     @GetMapping("/listaEvento")
     public List<Evento> listaEvento() {
 
         return eventoService.listarEvento();
-
     }
 
 
@@ -62,8 +66,6 @@ public class ControladorInicio {
 	public void actualizarEvento(@PathVariable Integer id, @RequestBody Evento evento) {
 		eventoService.actualizar(id, evento);
 	}
-
-
 
 
     @DeleteMapping("/eliminarEvento/{id_evento}")
@@ -89,12 +91,23 @@ public class ControladorInicio {
     }
 
     /////Local
+    @GetMapping("/listaLocal")
+    @ResponseBody
+    public List<Local> listaLocal() {
 
+        return localService.listaLocal();
+    }
+    
     @PostMapping("/guardarLocal")
     public void guardarLocal(@RequestBody Local local) {
 
     	localService.guardar(local);
 
+    }
+    
+    @PutMapping("/editarLocal/{id_local}")
+    public void editarLocal(@PathVariable Integer id, @RequestBody Local local) {
+        localService.actualizar(id,local);
     }
 
 
@@ -103,36 +116,26 @@ public class ControladorInicio {
         localService.eliminar(local);
     }
 
-    @PutMapping("/editarLocal/{id_local}")
-    public void editarLocal(@PathVariable Integer id, @RequestBody Local local) {
-        localService.actualizar(id,local);
-    }
-
-    @GetMapping("/listaLocal")
-    @ResponseBody
-    public List<Local> listaLocal() {
-
-        return localService.listaLocal();
-    }
 
     ///////////ZonaEventos
-
-    @PostMapping("/guardarZona")
-    public void guardarZona(@RequestBody  ZonaEvento zonaEvento) {
-
-
-        zonaService.guardar(zonaEvento);
-        
-
-    }
-    
-    
-
     @GetMapping("/listaZona")
     public List<ZonaEvento> listaZona() {
 
         return zonaService.listazona();
     }
+    
+    @PostMapping("/guardarZona")
+    public void guardarZona(@RequestBody  ZonaEvento zonaEvento) {
+    	
+        zonaService.guardar(zonaEvento);
+       
+    }
+    
+    @PutMapping("/editarZona/{id_zona}")
+    public void editarZona(@PathVariable Integer id, @RequestBody ZonaEvento zona) {
+        zonaService.actualizar(id,zona);
+    }
+    
 
     @DeleteMapping("/eliminarZona/{id_zona}")
     public void eliminarZona(ZonaEvento zonaEvento) {
@@ -140,9 +143,28 @@ public class ControladorInicio {
        
     }
     
-    @PutMapping("/editarZona/{id_zona}")
-    public void editarZona(@PathVariable Integer id, @RequestBody ZonaEvento zona) {
-        zonaService.actualizar(id,zona);
+    //////Usuario
+    @GetMapping("/listaUsuario")
+    public List<Usuario> listaUsuario() {
+
+        return usuarioService.listaUsuario();
+    }
+    
+    @PostMapping("/guardarUsuario")
+    public void guardarUsuario(@RequestBody  Usuario usuario) {
+    	
+        usuarioService.guardar(usuario);
+        
+    }
+    
+    @PutMapping("/editarUsuario/{id_usuario}")
+    public void editarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
+        usuarioService.actualizar(id,usuario);
+    }
+    
+    @DeleteMapping("/eliminarUsuario/{id_usuario}")
+    public void eliminarUsuario(Usuario usuario) {
+        usuarioService.eliminar(usuario);
     }
 
 
