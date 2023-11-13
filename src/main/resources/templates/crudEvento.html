@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-secutiry">
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
+        <meta charset="UTF-8">
+
+
+    </head>
+    <body>
+
+        <header th:replace="layout/plantilla :: header"></header>
+
+        </br>
+        <div class="container" style="margin-top: 1%">
+            <form id="id_form"  th:action="@{/listaEvento}" > 
+
+
+                <div class="row">
+
+                    <div class="col-auto ">
+                        <label > [[#{index.filtrar}]]</label>
+                    </div>
+                    <div class="col-auto ">
+                        <input type="text" name="nombre" class="form-control" id="nombre" th:value="${nombre}" >
+                    </div>
+
+                    <div class="col-auto">
+                        <input type="submit" class="btn btn-info mb-3"  th:value="#{index.btn-buscar}">
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="content" >
+
+                                <div th:if="${eventos !=null and !eventos.empty}"   >
+
+                                    <table border="1" class="table table-success table-striped table-bordered align-middle">
+
+                                        <thead class="thead-dark" style="text-align: center;">
+                                            <tr >
+
+                                                <th>[[#{evento.nombre}]]  </th>
+                                                <th>[[#{evento.fecha}]]  </th>
+                                                <th>[[#{evento.estado}]]  </th>
+                                                <th class="col-md-1">[[#{evento.local}]]  </th>
+                                                <th>[[#{evento.disponibilidad}]]  </th>
+                                                <th>[[#{evento.imagen}]]  </th>
+                                                <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.editar}]]  </th>
+                                                <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.eliminar}]]  </th>
+
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                            <tr th:each="evento : ${eventos}" style="text-align: center;" >
+
+                                                <td    th:text="${evento.nombre}"> Mostrar     </td>
+                                                <td    th:text="${evento.fecha}"> Mostrar     </td>
+                                                <td  th:text="${evento.estado.nomestado}"> Mostrar     </td>
+                                                <td   th:text="${evento.local.nombre}"> Mostrar     </td>
+                                                <td  th:text="${evento.disponibilidad.nomdis}"> Mostrar    </td>
+                                                <td  > <img th:if="${evento.imagen}"
+                                                            class="rounded" style="max-width: 50%; "
+                                                            th:src="@{'/uploads/' + ${evento.imagen}}" /> </td>
+                                                <td style="text-align: center;" sec:authorize="hasRole('ROLE_ADMIN')"   >
+                                                    <a th:href="@{/editarEvento/} + ${evento.id_evento}" class="btn btn-secondary">
+                                                        <i class="fas fa-angle-double-right"> </i>
+                                                        [[#{accion.editar}]] </a>   </td>
+
+                                                <td style="text-align: center;" sec:authorize="hasRole('ROLE_ADMIN')"  > 
+                                                    <a th:href="@{/eliminarEvento/} + ${evento.id_evento}"  class="btn btn-primary">
+                                                        <i class="fas fa-angle-double-right"></i> 
+                                                        [[#{accion.eliminar}]] </a> </td>
+
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+                                <div class="text-center p-2" th:if="${eventos == null or eventos.empty}"  >
+
+                                    <span th:text="#{evento.lista-vacia}"> Lista </span>
+
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+        </div>
+        <footer th:replace="layout/plantilla :: footer"></footer>
+
+
+
+
+
+    </body>
+</html>

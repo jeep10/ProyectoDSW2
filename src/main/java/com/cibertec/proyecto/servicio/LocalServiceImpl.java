@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cibertec.proyecto.dao.LocalDao;
 import com.cibertec.proyecto.domain.Local;
@@ -15,27 +16,34 @@ public class LocalServiceImpl implements LocalService {
     private LocalDao Dao;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Local> listaLocal() {
         return Dao.findAll();
     }
 
     @Override
+    @Transactional
     public void guardar(Local local) {
         Dao.save(local);
     }
 
     @Override
+    @Transactional
     public void eliminar(Local local) {
         Dao.delete(local);
     }
 
-	@Override
-	public void actualizar(Integer id, Local local) {
-		Local objeto = Dao.findById(id).get();
-		if(objeto != null) {
-			objeto.setNombre(local.getNombre());
-			objeto.setAforo(local.getAforo());
-			Dao.save(objeto);
-		}
-	}
+    @Override
+    @Transactional(readOnly = true)
+    public Local econtrarLocal(Local local) {
+        return Dao.findById(local.getId_local()).orElse(null);
+    }
+
+    @Override
+    public List<Local> ecnontrarPorNombre(String nombre) {
+        if (nombre != null) {
+            return Dao.findAll(nombre);
+        }
+        return Dao.findAll();
+    }
 }

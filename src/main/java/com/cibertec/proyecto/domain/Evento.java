@@ -13,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
@@ -26,6 +29,7 @@ public class Evento implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_evento;
 
+    @NotEmpty
     private String nombre;
 
     @Temporal(TemporalType.DATE)
@@ -35,6 +39,7 @@ public class Evento implements Serializable{
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_estado")
+    @NotNull
     private Estado estado;
 
     @JsonIgnore
@@ -47,6 +52,7 @@ public class Evento implements Serializable{
     @JoinColumn(name = "id_disponibilidad")
     private Disponibilidad disponibilidad;
 
+    private String imagen;
 
 	public int getId_evento() {
 		return id_evento;
@@ -96,6 +102,13 @@ public class Evento implements Serializable{
 		this.disponibilidad = disponibilidad;
 	}
 
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

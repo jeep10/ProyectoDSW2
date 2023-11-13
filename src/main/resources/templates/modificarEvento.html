@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org" >
+    <head th:replace="layout/plantilla :: head">
+        <title>[[#{evento.formulario}]]</title>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+
+        </br>
+        <div class="container" style="margin-top: 1%">
+            <div class="mr-5 ml-5">
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+
+                        <div class="card-header">
+
+                            <h2>[[#{modificarE.titulo}]]</h2>
+                            <a class="btn btn-primary" th:href="@{/listaEvento}"  >[[#{accion.regresar}]]</a>
+
+                        </div>
+                        <br/>
+
+                        <div class="form-group">
+                            <form th:action="@{/guardarEvento}"  method="post"  th:object="${evento}"   enctype="multipart/form-data" >
+                                <div class="form-group">
+
+                                    <input type="hidden" name="id_evento" th:field="*{id_evento}" class="form-control" >
+                                </div>
+                                <br/>
+                                <div class="mb-3">
+                                    <label for="nombre"  >[[#{evento.nombre}]]</label>
+                                    <input type="text" name="nombre"  th:field="*{nombre}" class="form-control mb-2" th:placeholder="#{evento.nombre}"/>
+                                    <span class="form-text" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error nombre</span>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="fecha"  >[[#{evento.fecha}]] </label>
+                                    <input type="date" name="fecha" th:field="*{fecha}" class="form-control mb-2" th:placeholder="#{evento.fecha}"/>
+                                    <span class="form-text" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}">Error fecha</span>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="id_evenestado"  >[[#{evento.estado}]] </label>
+
+                                    <select id="id_evenestado" name="estado.id_estado" class="form-control mb-2" th:field="*{estado}" >
+                                        <option value=" "  >[[#{estado.cbo}]]</option> 
+                                        <option value=" "  th:each="estado:${estados}" th:value="${estado.id_estado}" th:text="${estado.nomestado}"></option>    
+
+                                    </select>
+                                    <span class="form-text" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">Error estado</span>
+                                </div>
+
+
+
+                                <div class="mb-3">
+                                    <label for="id_evenlocal"  >[[#{evento.local}]] </label>
+                                    <select id="id_evenlocal" name="local.id_local" class="form-control mb-2" th:field="*{local}" >
+                                        <option value=" ">[[#{local.cbo}]]</option>    
+                                        <option value=" "  th:each="local:${locales}" th:value="${local.id_local}" th:text="${local.nombre}"></option>   
+                                    </select>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="id_evendis"  >[[#{evento.disponibilidad}]] </label>
+                                    <select id="id_evendis" name="disponibilidad.id_disponibilidad" class="form-control mb-2" th:field="*{disponibilidad}">
+                                        <option value=" ">[[#{dispo.cbo}]]</option>    
+                                        <option value=" "  th:each="disponibilidad:${disponibilidades}" th:value="${disponibilidad.id_disponibilidad}" th:text="${disponibilidad.nomdis}"></option>   
+                                    </select>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="File"  >[[#{evento.imagen}]] </label>
+
+                                    <input class="form-control mb-2" type="file" name="file"  />
+
+                                    <!--            <img th:if="*{imagen}"
+                                                                                                    class="rounded" style="max-width: 50%; "
+                                                                                                    th:src="@{'/uploads/' + *{imagen}" /> -->
+
+                                </div>
+                                <br/>
+                                <input type="submit" name="guardar" th:value="#{accion.guardar}" class="btn btn-success"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer th:replace="layout/plantilla :: footer"></footer>
+
+
+
+        <script type="text/javascript">
+
+            //        $.getJSON("JSONestado", {}, function(data){ 
+            //	$.each(data, function(i, item){
+            //		$("#id_evenestado").append("<option value='"+ item.id_estado +"'>"+ item.nomestado +"</option>"); 
+            //	});
+            //        });
+
+            //        $.getJSON("JSONlocal", {}, function(data){ 
+            //	$.each(data, function(i, item){
+            //		$("#id_evenlocal").append("<option value='"+ item.id_local +"'>"+ item.nombre +"</option>"); 
+            //	});
+            //        });
+            //        
+            //        $.getJSON("JSONdisponibilidad", {}, function(data){ 
+            //	$.each(data, function(i, item){
+            //		$("#id_evendis").append("<option value='"+ item.id_disponibilidad +"'>"+ item.nomdis +"</option>"); 
+            //	});
+            //        });
+        </script>
+
+    </body>
+</html>

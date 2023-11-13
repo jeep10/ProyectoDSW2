@@ -12,9 +12,11 @@ public interface LocalService {
 	public abstract List<Local> listaLocal();
 
     public abstract void guardar(Local local);
-    
-    public void actualizar(Integer id, Local local);
 
     public abstract void eliminar(Local local);
+
+    public abstract Local econtrarLocal(Local local);
+
+    public abstract List<Local> ecnontrarPorNombre(String nombre);
     
 }

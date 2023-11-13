@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-secutiry" >
+    <head th:fragment="head">
+        <title>Plantilla</title>
+        <meta charset="UTF-8">
+
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+            <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
+
+            <script th:src="@{/webjars/jquery/jquery.min.js}" ></script>
+            <script th:src="@{/webjars/popper.js/umd/popper.min.js}" ></script>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+        <header th:fragment="header">
+            <!--<h1>Control de Clientes</h1>-->
+            <!--<h1 th:text="#{plantilla.titulo}">Titulo</h1>-->
+
+            <nav class="navbar navbar-expand-sm navbar-dark bg-info p-0 ">
+
+                <div class="container">
+                    <a th:href="@{/}" class="navbar-brand"  > [[#{plantilla.nav-titulo}]]</a>
+
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"  >
+                        <span class="navbar-toggler-icon" ></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarCollapse" >
+
+                        <ul class="navbar-nav">
+
+                            <li class="nav-item px-2" sec:authorize="isAuthenticated()">
+
+                                <a th:href="@{/}" class="nav-link active" th:text="#{barra.titulo}">Inicio</a>
+
+                            </li>
+
+                            <li class="nav-item dropdown" sec:authorize="isAuthenticated()" >
+                                <a class="nav-link active dropdown-toggle" href="#" role="button" sec:authorize="hasRole('ROLE_ADMIN')" data-bs-toggle="dropdown" aria-expanded="false">
+                                    [[#{plantilla.nav-local}]]
+                                </a>
+                                <ul class="dropdown-menu">
+
+                                    <li><a class="dropdown-item"  th:href="@{/agregarLocal}" > [[#{plantilla.nav-local-crear}]]</a></li>
+                                    <li><a class="dropdown-item"  th:href="@{/listaLocal}"> [[#{plantilla.nav-local-ver}]]</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown" sec:authorize="isAuthenticated()" >
+                                <a class="nav-link active dropdown-toggle" href="#" role="button" sec:authorize="hasRole('ROLE_ADMIN')" data-bs-toggle="dropdown" aria-expanded="false">
+                                    [[#{plantilla.nav-evento}]]
+                                </a>
+                                <ul class="dropdown-menu">
+
+                                    <li><a class="dropdown-item"   th:href="@{/agregarEvento}" > [[#{plantilla.nav-evento-crear}]]</a></li>
+                                    <li><a class="dropdown-item"  th:href="@{/listaEvento}"> [[#{plantilla.nav-evento-ver}]]</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown" sec:authorize="isAuthenticated()" >
+                                <a class="nav-link active dropdown-toggle" href="#" role="button" sec:authorize="hasRole('ROLE_ADMIN')" data-bs-toggle="dropdown" aria-expanded="false">
+                                    [[#{plantilla.nav-zona}]]
+                                </a>
+                                <ul class="dropdown-menu">
+
+                                    <li><a class="dropdown-item" th:href="@{/agregarZona}" > [[#{plantilla.nav-zona-crear}]]</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/listaZona}"> [[#{plantilla.nav-zona-ver}]]</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown" sec:authorize="isAuthenticated()" >
+                                <a class="nav-link active dropdown-toggle" href="#" role="button" sec:authorize="hasRole('ROLE_ADMIN')" data-bs-toggle="dropdown" aria-expanded="false">
+                                    [[#{plantilla.nav-usuario}]]
+                                </a>
+                                <ul class="dropdown-menu">
+
+                                    <li><a class="dropdown-item"  th:href="@{/listaUsuario}"> [[#{plantilla.nav-usuario-ver}]]</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                                <a class="nav-link active dropdown-toggle" href="#" role="button"  data-bs-toggle="dropdown" aria-expanded="false">
+                                    [[#{plantilla.nav-compra}]]
+                                </a>
+                                <ul class="dropdown-menu">
+
+                                    <li><a class="dropdown-item" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/listaCompraTotal}"> [[#{plantilla.nav-comprasT-ver}]]</a></li>
+                                    <li><a class="dropdown-item"  th:href="@{/listaCompraUsuario}"> [[#{plantilla.nav-comprasU-ver}]]</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                        <ul sec:authorize="isAuthenticated()"  class="navbar-nav ml-auto">
+
+                            <li class="nav-item mr-3">
+
+                                <a href="#" class="nav-link">
+
+                                    <i class="fas fa-user"></i>
+                                    <span th:text="#{barra.bienvenido}" class="badge "> Bienvenido</span>
+
+
+
+                                    <span sec:authentication="name" th:value="${username}" name="username" id="username" class="badge ">Usuario</span>
+
+                                </a>
+
+                            </li>
+
+                            <div class="form-group">
+                                <input th:value="${#authentication.getPrincipal().getUsername()}" type="hidden"   name="username" id="username">
+                            </div>
+
+                            <li class="nav-item" >
+                                <form method="POST" th:action="@{/logout}">
+
+                                    <a href="#" onclick="this.parentNode.submit();" class="nav-link" >
+                                        <i class="fas fa-user-times"  ></i> [[#{barra.salir}]]
+
+                                    </a>
+
+
+                                </form>
+
+
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+
+
+                </div>
+            </nav>
+
+
+            <section id="main-header" class="py-2 bg-info text-white">
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-md-6" >
+
+                            <h1>
+
+                                <i class="fas fa-cog"></i> [[#{plantilla.nav-titulo}]]
+
+                            </h1>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+
+        </header>
+
+        <footer th:fragment="footer" class="bg-secondary text-white mt-5 p-5">
+
+            <div class="container">
+
+                <div class="col" >
+
+                    <p class="lead text-center">
+
+                        <a th:href="@{/(lang=es)}" style="color:#FFFFFF" >Es   </a> |
+                        <a th:href="@{/(lang=en)}" style="color:#FFFFFF">En   </a> |
+
+                        <span >[[#{plantilla.pie-pagina}]] &copy; <a href="https://www.cibertec.edu.pe/" target="_blank" style="color:#FFFFFF">Cibertec</a></span>
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+        </footer>
+    </body>
+</html>

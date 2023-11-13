@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml" >
+    <head th:replace="layout/plantilla :: head">
+		<meta charset="UTF-8">
+        <title>Login</title>
+       
+
+
+    </head>
+    <body>
+
+        <header th:replace="layout/plantilla :: header" ></header>
+
+        <section id="actions" class="py-4 mb-4 bg-light">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <!--Se podrían agrear botones-->
+
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="login">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-6 mx-auto">
+
+                        <div class="card">
+
+                            <div class="card-header">
+
+                                <h4>[[#{usuario.login}]]</h4>
+
+
+                            </div>
+
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <form method="POST" th:action="@{/registrarse}" th:object="${usuario}" >
+
+                                        <div class="form-group">
+                                            <label for="nombres" >[[#{usuario.nombres}]] </label>
+                                            <input type="text" name="nombres" id="nombres" th:field="*{nombres}"  class="form-control" th:placeholder="#{usuario.nombres}"/>
+                                            <span class="form-text" th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}">Error nombre</span>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="apellidos" >[[#{usuario.apellidos}]] </label>
+                                            <input type="text" name="apellidos" id="apellidos" th:field="*{apellidos}" class="form-control" th:placeholder="#{usuario.apellidos}"/>
+                                            <span class="form-text" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}">Error nombre</span>
+
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label for="username" >[[#{usuario.username}]] </label>
+                                            <input type="text" name="username" id="username" th:field="*{username}" class="form-control" th:placeholder="#{usuario.username}"/>
+                                            <span class="form-text" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error nombre</span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="dni" >[[#{usuario.dni}]] </label>
+                                            <input type="text" name="dni" id="dni" th:field="*{dni}" class="form-control" th:placeholder="#{usuario.dni}"/>
+                                            <span class="form-text" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">Error nombre</span>
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <label for="password" >[[#{usuario.password}]] </label>
+                                            <input type="password" name="password" id="password" th:field="*{password}" class="form-control" th:placeholder="#{usuario.password}"/>
+                                            <span class="form-text" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Error nombre</span>
+                                        </div>
+
+
+                                        </br>
+
+                                        <input type="submit" th:value="#{usuario.registrar}" class="btn btn-primary btn-block"  />
+
+                                    </form>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <footer th:replace="layout/plantilla :: footer"></footer>
+
+    </body>
+</html>
