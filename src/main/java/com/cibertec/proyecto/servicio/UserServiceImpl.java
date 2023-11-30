@@ -34,12 +34,8 @@ public class UserServiceImpl implements UserService{
         Rol rol = new Rol();
 
         rol.setIdRol(2);
-//        List<Rol> rol = new ArrayList<Rol>();
-//        rol.add((Rol) Arrays.asList(new Rol("ROLE_USER")));
         user.setRol(rol);
 
-//                new Usuario(usuario.getNombres(), usuario.getApellidos(), usuario.getUsername(), usuario.getDni(), usuario.getPassword(),
-//                Arrays.asList(new Rol("ROLE_USER")));
         return dao.save(user);
     }
 

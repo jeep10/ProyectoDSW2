@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteDetalleCompra" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3adbde34-9874-468a-95a1-34bdd09c3c5b">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="qr" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="detalleCompra.compra.id_compra" class="java.lang.Integer"/>
+	<field name="detalleCompra.zonaEvento.evento.nombre" class="java.lang.String"/>
+	<field name="detalleCompra.compra.usuario.nombres" class="java.lang.String"/>
+	<field name="detalleCompra.compra.fecha" class="java.util.Date"/>
+	<field name="detalleCompra.compra.total" class="java.lang.Double"/>
+	<field name="detalleCompra.zonaEvento.evento.local.nombre" class="java.lang.String"/>
+	<field name="detalleCompra.zonaEvento.zona" class="java.lang.String"/>
+	<field name="precio" class="java.lang.Double"/>
+	<field name="cantidad" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="25d013de-8b52-4f59-8a2f-592f1f2e25fd"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="0743d5ad-db8a-485b-b5e0-9571ce5483f5"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Entrada]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="239" y="60" width="351" height="20" forecolor="#FFFFFF" uuid="36fa855b-15fa-49b8-b597-974c88b6dad4"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Presenta el Código qr para ingresar al evento]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="319">
+			<image>
+				<reportElement x="132" y="9" width="300" height="300" uuid="71a789f5-a9ee-4f1f-a429-585b7c224332">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{qr}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="db11433b-9653-44be-a1f7-99f26a2a7515"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="-11" y="0" width="31" height="21" forecolor="#080105" backcolor="#25E648" uuid="024da348-7283-445f-8b90-24726a1198d1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b4fe594a-e77b-4fac-b882-fc6061248474"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="20" y="0" width="70" height="21" forecolor="#080105" backcolor="#25E648" uuid="25eb87a4-31c2-416e-8af3-8e04d20acdeb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8e631236-2775-4da9-9530-046d529c5419"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="90" y="0" width="70" height="21" forecolor="#080105" backcolor="#25E648" uuid="82255e0b-19f3-43d6-ae5d-9253ebb58da5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c068c9b0-9e2d-47d9-adfc-07a3f647b2f2"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Evento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="160" y="0" width="80" height="21" forecolor="#080105" backcolor="#25E648" uuid="a0df718f-ee5a-4d3b-8a6e-98af892494cc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="353d5b10-8cc0-4e12-b4c7-d3561b75b276"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Estadio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="240" y="0" width="90" height="21" forecolor="#080105" backcolor="#25E648" uuid="b763ca90-09d6-4c25-8e3f-d7fd9b80f04b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="36678a43-0f92-46af-a113-ecea6f73d84c"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="500" y="0" width="60" height="21" forecolor="#080105" backcolor="#25E648" uuid="a4de05fd-5a4d-460a-b364-18cfaf2a7677">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2f108da8-d3b3-49ce-8e0f-768b44ba7032"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="330" y="0" width="50" height="21" backcolor="#25E648" uuid="0c706dca-60da-45b7-a62d-b959d0c46779">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="466a5cc3-d9b3-481b-9c7d-fe8919ec8a8b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="380" y="0" width="40" height="21" backcolor="#25E648" uuid="5f04c6a1-8db9-4282-b760-d61a3fbaae26">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e0efa8c5-89c9-4a70-bed8-97bdcf219ce8"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Entradas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="420" y="0" width="80" height="21" backcolor="#25E648" uuid="dfe3fa11-0503-4602-b132-56f3d488ec65">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="90a6d09a-a9fc-4136-b088-ab2e0af31716"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Zona]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="56">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="50" width="555" height="1" uuid="1e2bcfd0-7943-4fdf-8358-5b8316cc4071"/>
+			</line>
+			<textField>
+				<reportElement x="-11" y="0" width="31" height="30" uuid="db072774-6d54-4283-afd1-0663530b7760">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b4fe594a-e77b-4fac-b882-fc6061248474"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{detalleCompra.compra.id_compra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="0" width="70" height="30" uuid="01af07a7-b111-43a3-b333-2a5a17f8752d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8e631236-2775-4da9-9530-046d529c5419"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{detalleCompra.compra.usuario.nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="0" width="70" height="30" uuid="bfee8415-c5f8-4916-980f-196c2e375a69">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c068c9b0-9e2d-47d9-adfc-07a3f647b2f2"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{detalleCompra.zonaEvento.evento.nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="0" width="80" height="30" uuid="4ab107d8-071b-45a9-becb-79b97d4c92f3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="353d5b10-8cc0-4e12-b4c7-d3561b75b276"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{detalleCompra.zonaEvento.evento.local.nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="0" width="90" height="30" uuid="0d069185-ee74-4e26-8ec2-2159e19e5165">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="36678a43-0f92-46af-a113-ecea6f73d84c"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{detalleCompra.compra.fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="60" height="30" uuid="5d886e71-cca3-488b-9173-0e81b39468f6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2f108da8-d3b3-49ce-8e0f-768b44ba7032"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{detalleCompra.compra.total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="0" width="50" height="30" uuid="fec80090-2120-4643-92fe-d7cba8c616a0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="466a5cc3-d9b3-481b-9c7d-fe8919ec8a8b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="0" width="40" height="30" uuid="971af259-2af1-46da-9c64-2cf5fa6e0cc8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e0efa8c5-89c9-4a70-bed8-97bdcf219ce8"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="0" width="80" height="30" uuid="3cdde600-1af1-4b05-bb2d-f7ef5889698c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="90a6d09a-a9fc-4136-b088-ab2e0af31716"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{detalleCompra.zonaEvento.zona}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="82">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="60" width="515" height="13" backcolor="#E6E6E6" uuid="bca3b4a2-a8a9-465b-8a08-93cb63613310"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="60" width="40" height="13" backcolor="#E6E6E6" uuid="bcaa318b-fd5a-4cda-bd12-f6c17f26583b"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="60" width="100" height="13" uuid="7a4803d8-02e4-4efc-b1dc-3e32497f847e"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="10" width="545" height="50" uuid="2597288d-46e3-4b24-9ac1-364703f0b00f"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Lee los términos y condiciones para ingresar al evento sin incovenientes]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

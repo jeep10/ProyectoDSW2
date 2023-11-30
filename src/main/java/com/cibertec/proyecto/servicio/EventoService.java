@@ -9,19 +9,19 @@ import com.cibertec.proyecto.domain.Evento;
 @Service
 public interface EventoService {
 
-	public List<Evento> listarEvento();
+	public abstract List<Evento> listarEvento();
 
-    public void guardar(Evento evento);
+    public abstract void guardar(Evento evento);
 
-    public void eliminar(Evento evento);
+    public abstract void eliminar(Evento evento);
 
-    public Evento econtrarEvento(Evento evento);
+    public abstract Evento econtrarEvento(Evento evento);
 
-    public List<Evento> listarPorDisponibilidad();
+    public abstract List<Evento> listarPorDisponibilidad();
 
-    public List<Evento> listarPorNombre(String nombre);
+    public abstract List<Evento> listarPorNombre(String nombre);
 
-    public List<Evento> listarSoloPorNombre(String nombre);
+    public abstract List<Evento> listarSoloPorNombre(String nombre);
 
 	
 }

@@ -20,6 +20,8 @@ public class Detalle implements Serializable{
 
     @NotNull
     private int cantidad;
+    
+    private String invitado;
 
 	public CompraDetalle getDetalleCompra() {
 		return detalleCompra;
@@ -44,10 +46,29 @@ public class Detalle implements Serializable{
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
+	
+	
+
+
+	public String getInvitado() {
+		return invitado;
+	}
+
+	public void setInvitado(String invitado) {
+		this.invitado = invitado;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "Detalle [id= " + detalleCompra.getCompra().getId_compra() + " fecha= " + detalleCompra.getCompra().getFecha() + " total= " + detalleCompra.getCompra().getTotal() + " evento= " + detalleCompra.getCompra().getEvento().getNombre() + " zona= " + detalleCompra.getZonaEvento().getZona() + ", precio= " + precio + ", cantidad= " + cantidad + ", invitado=" + invitado + "]";
+	}
     
+	
+	
     
 }

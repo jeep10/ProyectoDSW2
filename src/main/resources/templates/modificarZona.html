@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org" >
+    <head th:replace="layout/plantilla :: head">
+		
+        <title>[[#{zona.formulario}]]</title>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+
+        </br>
+        <div class="container" style="margin-top: 1%">
+            <div class="mr-5 ml-5">
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+
+                        <div class="card-header">
+
+                            <h2>[[#{modificarZE.titulo}]]</h2>
+                            <a class="btn btn-primary" th:href="@{/}"  >[[#{accion.regresar}]]</a>
+
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <form th:action="@{/guardarZona}"  method="post"  th:object="${zonaEvento}"   >
+                                <div class="form-group">
+                                    <input type="hidden" name="id_zona" th:field="*{id_zona}" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="id_zonevento"  >[[#{evento.nombre}]] </label>
+
+                                    <select id="id_zonevento" name="evento.id_evento" th:field="*{evento}" class="form-control mb-2">
+                                        <option value=" "  >[[#{evento.cbo}]]</option> 
+                                        <option value=" "  th:each="evento:${eventos}" th:value="${evento.id_evento}" th:text="${evento.nombre}"></option>    
+                                    </select>
+                                </div>
+
+
+                                <div class="mb-3">
+
+                                    <label for="zona"  >[[#{zona.zona}]] </label>
+                                    <input type="text" name="zona" th:field="*{zona}" class="form-control mb-2" th:placeholder="#{zona.zona}"/>
+                                    <span class="form-text" th:if="${#fields.hasErrors('zona')}" th:errors="*{zona}">Error zona</span>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label for="precio"  >[[#{zona.precio}]] </label>
+                                    <input type="text" name="precio" th:field="*{precio}" class="form-control mb-2" th:placeholder="#{zona.precio}"/>
+                                    <span class="form-text" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}">Error precio</span>
+
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="stock"  >[[#{zona.stock}]] </label>
+                                    <input type="text" name="stock" th:field="*{stock}" class="form-control mb-2" th:placeholder="#{zona.stock}"/>
+                                    <span class="form-text" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}">Error stock</span>
+
+                                </div>
+
+
+
+
+                                <input type="submit" name="guardar" th:value="#{accion.guardar}"  class="btn btn-success"/>
+
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="layout/plantilla :: footer"></footer>
+
+
+    </body>
+</html>

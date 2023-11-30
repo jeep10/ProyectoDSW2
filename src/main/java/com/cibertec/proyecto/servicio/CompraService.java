@@ -15,5 +15,14 @@ public interface CompraService {
 
     public abstract void eliminar(Compra compra);
 
+    public abstract Compra econtrarCompra(Compra compra);
+
+    public abstract List<Compra> listarPorId(int id_usuario);
+
+    public abstract Compra listarUltimo();
+
+    public abstract Compra econtrarCompra(int id_compra);
+
+    
 
 }
